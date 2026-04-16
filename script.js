@@ -27,9 +27,12 @@ const loadSecondImg = document.getElementById('loadSecond')
 
 const newImg =(photos)=>{
     const images = document.querySelectorAll('.card img')
+    const smallTxt = document.querySelectorAll('.card small')
+
     photos.forEach((photo, index)=>{
         if (images[index]) {
             images[index].src= photo.src.large
+            smallTxt[index].innerText = `ID: ${photo.id}`
         }
     })
 }
@@ -57,3 +60,13 @@ const hideBtn = ()=> {
 }
 
 hideBtn()
+
+const searchBtn = document.getElementById('searchBtn')
+const searchInput = document.getElementById('search')
+
+searchBtn.addEventListener('click',()=>{
+    const newWord = searchInput.value
+    if (newWord !== "") {
+        loadImg(newWord)
+    }
+})
